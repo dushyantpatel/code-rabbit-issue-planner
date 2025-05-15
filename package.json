@@ -1,0 +1,37 @@
+{
+  "name": "code-rabbit-issue-planner",
+  "version": "1.0.0",
+  "description": "Agentic issue planner with LLM based action and planning system",
+  "main": "src/main.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf node_modules",
+    "reinstall": "rm -rf node_modules && npm install",
+    "rebuild": "rm -rf node_modules && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dist/main.js",
+    "dev": "tsx src/main.ts",
+    "dev:watch": "nodemon -q -e ts,tsx -x tsx src/main.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dushyantpatel/code-rabbit-issue-planner.git"
+  },
+  "author": "Dushyant Patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dushyantpatel/code-rabbit-issue-planner/issues"
+  },
+  "homepage": "https://github.com/dushyantpatel/code-rabbit-issue-planner#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.18",
+    "nodemon": "^3.1.10",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
