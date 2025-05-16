@@ -1,12 +1,18 @@
 import express from 'express';
+import { listIssues, getIssue, updateIssue, deleteIssue } from '../controllers/issueManagement.js';
 
-export const issuesRouter = express.Router();
+const issuesRouter = express.Router();
 
-issuesRouter.get('/', (req, res) => {
-    res.json("you're GET on /issues");
-});
+// Get all issues
+issuesRouter.get('/', listIssues);
 
-issuesRouter.get('/:issueId', (req, res) => {
-    const { issueId } = req.params;
-    res.json(`you're GET on /issues/${issueId}`);
-});
+// Get a specific issue
+issuesRouter.get('/:issueId', getIssue);
+
+// Update an issue
+issuesRouter.put('/:issueId', updateIssue);
+
+// Delete an issue
+issuesRouter.delete('/:issueId', deleteIssue);
+
+export { issuesRouter };

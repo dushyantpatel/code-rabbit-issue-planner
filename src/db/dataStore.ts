@@ -1,4 +1,4 @@
-// this could be a module to connect to a database.
+// This could be a module to connect to a database.
 
 import { IssueClass } from '../types/issue';
 
@@ -6,7 +6,10 @@ interface DataStore {
     issues: IssueClass[];
 }
 
-// for now, we will store data in memory
-export const dataStore: DataStore = {
+// For now, we will store data in memory
+// Create a singleton instance of the data store
+const dataStore: DataStore = {
     issues: [],
 };
+
+export { dataStore };

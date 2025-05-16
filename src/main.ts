@@ -5,8 +5,9 @@ import { issuesRouter } from './routes/issuesRoutes.js';
 import { analyzeRouter } from './routes/analyzeRoutes.js';
 import { planRouter } from './routes/planRoutes.js';
 import config from './config.json' with { type: 'json' };
+// import readmeContent from '../README.md' with { type: 'text/markdown' };
 
-// console.log(JSON.stringify(config));
+// console.log(JSON.stringify(readmeContent));
 
 const PORT: number = config.apiPort;
 const default404Message = 'Endpoint not found. Please check the API documentation.';

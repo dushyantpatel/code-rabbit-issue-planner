@@ -1,6 +1,9 @@
-import { HTTPError, throwHttpError } from '../common/errors.js';
+import { throwHttpError } from '../common/errors.js';
 import { IssueComment } from './issueComment.js';
 
+/**
+ * Interface representing an issue
+ */
 interface Issue {
     id: string;
     title: string;
@@ -15,6 +18,9 @@ interface Issue {
     plan?: string;
 }
 
+/**
+ * Class representing an issue
+ */
 class IssueClass implements Issue {
     id: string;
     title: string;

@@ -1,8 +1,9 @@
 import express from 'express';
+import { analyzeIssue } from '../controllers/issueAnalysis.js';
 
-export const analyzeRouter = express.Router();
+const analyzeRouter = express.Router();
 
-analyzeRouter.post('/:issueId', (req, res) => {
-    const { issueId } = req.params;
-    res.json(`you're POST on /analyze/${issueId}`);
-});
+// Analyze an issue
+analyzeRouter.post('/:issueId', analyzeIssue);
+
+export { analyzeRouter };

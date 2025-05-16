@@ -1,9 +1,15 @@
+/**
+ * Interface representing an issue comment.
+ */
 interface IssueComment {
     author: string;
     createdAt: string | Date;
     text: string;
 }
 
+/**
+ * Class representing an issue comment.
+ */
 class IssueCommentClass implements IssueComment {
     author: string;
     createdAt: Date;

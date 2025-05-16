@@ -1,8 +1,9 @@
-import express, { Request, Response } from 'express';
-import { saveNewIssue } from '../controllers/saveNewIssue.js';
+import express from 'express';
+import { createIssue } from '../controllers/issueManagement.js';
 
 const eventsRouter = express.Router();
 
-eventsRouter.post('/', saveNewIssue);
+// Create a new issue
+eventsRouter.post('/', createIssue);
 
 export { eventsRouter };
