@@ -79,6 +79,23 @@ The server will start on port 8000 (configurable in `src/config.json`).
 - `npm run lint` - Check code style
 - `npm run lint:fix` - Fix code style issues
 
+## Testing
+
+This project includes a comprehensive test suite with both unit tests and integration tests:
+
+- `npm test` - Run all tests
+- `npm run test:unit` - Run only unit tests
+- `npm run test:integration` - Run only integration tests
+- `npm run test:coverage` - Run all tests with coverage reporting
+
+The testing framework uses:
+
+- **Mocha** - Test runner
+- **Chai** - Assertions library
+- **Sinon** - Mocking and stubbing
+- **Supertest** - HTTP testing
+- **NYC (Istanbul)** - Code coverage
+
 ## Project Structure
 
 ```

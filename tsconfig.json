@@ -8,8 +8,9 @@
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+        "types": ["mocha", "chai", "node", "sinon"]
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "test/**/*.ts"],
     "exclude": ["node_modules"]
 }
