@@ -1,6 +1,45 @@
-# Code Rabbit Issue Planner
+# Issue Planner
 
 An intelligent issue management system that uses LLM (Large Language Model) capabilities to automatically analyze and plan software development tasks. The system provides a robust backend for issue tracking with automated analysis and planning.
+
+## Introduction
+
+I built this project as part of a take-home assignment for a software engineering interview, intended to be completed within approximately 24 hours. My primary focus was to demonstrate the ability to design modular, testable, and extensible code, as would be expected in a production environment. I prioritized aspects such as clear separation of concerns, maintainable structure, and robust testing utilities. However, the implementation is still buggy and not intended for production use — for example, the system currently allows users to create multiple issues with the same ID. There are many features and considerations that would be addressed in a real-world scenario, such as a full authentication and authorization module, stricter validation, and persistent storage.
+
+**Design decisions made:**
+
+- Separated route and controller logic to clearly distinguish routing from request handling, supporting horizontal scaling and easier testing.
+- Well-organized file system to facilitate teamwork and make the codebase approachable for multiple contributors.
+- Enforced linting and strict type checking for faster development and fewer errors.
+- Use of tools like prettier for better developer experience and code maintainability.
+- Provided comprehensive test utilities and a dedicated test server to enable both unit and integration testing.
+- Logging at various levels for better understanding of data flow. Also helps with debugging.
+- Used a mock LLM client with a clear interface, making it easy to swap in a real LLM service later.
+- Modularized error handling and logging for better observability and maintainability.
+- Rendered the Markdown README as HTML at the root endpoint for interactive documentation (clickable links but may not work as yet).
+- Keeping the in-memory data store simple to allow for faster iterative development while bootstraping.
+- Use of Express.js to allow for scalable, production ready API.
+- Custom Errors like HTTPError
+
+**Things that could have been done with more time:**
+
+- This is not an exhaustive list! :-)
+- Integrating with actual LLMs.
+- Git hooks for linting before committing code in VCS or pushing out.
+- Implementing connectivity with a persistent database (e.g. PostgreSQL) for real data durability.
+- Designing an adapter for DB connectivity, to make it easier to switch from in-memory storage to persistent storage.
+- Adding a robust authentication and authorization system.
+- Improving input validation and error handling for edge cases.
+- Robust Error handling infrastructure with more Custom error classes.
+- Implementing rate limiting for API calls made to LLMs (cost based).
+- Implementing rate limiting and monitoring for production readiness.
+- Building a frontend UI for easier interaction with the API.
+- CI/CD pipelines for on-prem/cloud deployment with rollback capabilities in case of failures.
+- Continuous monitoring of service health.
+- Dynamic scaling up/down.
+- Separate dev/production configurations.
+
+_Note: The project was built with the help of LLM tools that were used for generating some parts of the documentation, assisting with integration of external modules and dependency resolution, and auto code completion/generation to help with development. For example, LLM tools were used to create tests for routes once a few were provided, create handlers, and for debugging. AI was not used for things such as structuring the project, choosing external modules, design architecture - this project was built from the ground up._
 
 ## Features
 
