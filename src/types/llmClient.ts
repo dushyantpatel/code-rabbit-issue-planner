@@ -1,6 +1,6 @@
-import { Issue } from './issue';
-import { LLMAnalysisResponse } from './llmAnalysisResponse';
-import { LLMIssuePlanResponse } from './llmIssuePlanResponse';
+import { Issue } from './issue.js';
+import { LLMAnalysisResponse } from './llmAnalysisResponse.js';
+import { LLMIssuePlanResponse } from './llmIssuePlanResponse.js';
 
 export interface LLMClient {
     analyzeIssue(input: Issue): Promise<LLMAnalysisResponse>;
