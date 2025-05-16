@@ -5,9 +5,7 @@ import { issuesRouter } from './routes/issuesRoutes.js';
 import { analyzeRouter } from './routes/analyzeRoutes.js';
 import { planRouter } from './routes/planRoutes.js';
 import config from './config.json' with { type: 'json' };
-// import readmeContent from '../README.md' with { type: 'text/markdown' };
-
-// console.log(JSON.stringify(readmeContent));
+import { htmlReadmeContent } from './readme.js';
 
 const PORT: number = config.apiPort;
 const default404Message = 'Endpoint not found. Please check the API documentation.';
@@ -16,8 +14,9 @@ const app = express();
 
 app.use(cors());
 
+// Serve README as HTML at root
 app.get('/', (req, res) => {
-    res.send('<h1>ReadMe here</h1>');
+    res.type('html').send(htmlReadmeContent);
 });
 
 // json payloads
@@ -36,4 +35,6 @@ app.use((req, res) => {
 });
 
 // start server
-app.listen(PORT, () => console.log(`server connected on port ${PORT}`));
+app.listen(PORT, () => {
+    console.log(`server connected on port ${PORT.toString()}`);
+});

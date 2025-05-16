@@ -22,7 +22,7 @@ class IssueCommentClass implements IssueComment {
     }
 
     toString(): string {
-        return `[${this.createdAt}] ${this.author}: ${this.text}`;
+        return `[${this.createdAt.toISOString()}] ${this.author}: ${this.text}`;
     }
 }
 

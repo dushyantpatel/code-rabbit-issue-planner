@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { dataStore } from '../db/dataStore.js';
 import { HTTPError, throwHttpError } from '../common/errors.js';
-import { IssueClass } from '../types/issue.js';
+import { Issue, IssueClass } from '../types/issue.js';
 
 /**
  * Creates a new issue
@@ -11,8 +11,7 @@ function createIssue(req: Request, res: Response): void {
     try {
         const issue: IssueClass = IssueClass.fromJson(req.body);
         dataStore.issues.push(issue);
-        console.log(dataStore);
-        res.json("you're POST on /events");
+        res.json('OK');
     } catch (err) {
         const statusCode = err instanceof HTTPError ? err.statusCode : 500;
         res.status(statusCode).json(err); // TODO - in prod, don't send err as it is. Make the message meaningful without giving away too much info
@@ -53,7 +52,10 @@ function getIssue(req: Request, res: Response): void {
 /**
  * Updates an issue's fields
  */
-function updateIssue(req: Request, res: Response): void {
+function updateIssue(
+    req: Request<{ issueId: string }, unknown, Partial<Issue>>,
+    res: Response,
+): void {
     try {
         const { issueId } = req.params;
         const issueIndex = dataStore.issues.findIndex((i) => i.id === issueId);
@@ -63,10 +65,16 @@ function updateIssue(req: Request, res: Response): void {
         }
 
         const existingIssue = dataStore.issues[issueIndex];
-        const updatedIssue = { ...existingIssue, ...req.body };
+        // Get raw data from existing issue and update with new values
+        const currentData = existingIssue.toJSON();
+        const updatedData = {
+            ...currentData,
+            ...req.body,
+            id: issueId, // prevent ID from being changed
+        };
 
         // Re-instantiate as IssueClass to ensure validation
-        dataStore.issues[issueIndex] = IssueClass.fromJson(updatedIssue);
+        dataStore.issues[issueIndex] = IssueClass.fromJson(updatedData);
 
         res.json(dataStore.issues[issueIndex]);
     } catch (err) {

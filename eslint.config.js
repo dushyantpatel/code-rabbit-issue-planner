@@ -1,46 +1,34 @@
 import js from '@eslint/js';
 import globals from 'globals';
-import tseslint from 'typescript-eslint';
-import { defineConfig } from 'eslint/config';
-import prettier from 'eslint-plugin-prettier';
+import * as tseslint from 'typescript-eslint';
 
-export default defineConfig([
-    // Base JS config
+export default tseslint.config(
     {
-        files: ['**/*.{js,mjs,cjs}'],
-        plugins: { js },
-        extends: ['js/recommended', 'google'],
+        extends: [
+            tseslint.configs.recommended,
+            tseslint.configs.recommendedTypeChecked,
+            tseslint.configs.strictTypeChecked,
+            tseslint.configs.stylistic,
+            tseslint.configs.stylisticTypeChecked,
+        ],
+        ignores: ['**/node_modules/*', 'dist/*'],
         languageOptions: {
-            globals: {
-                ...globals.browser,
-                ...globals.node,
-            },
-        },
-    },
-
-    // TypeScript + Prettier config
-    {
-        files: ['**/*.{ts,tsx}'],
-        languageOptions: {
-            parser: tseslint.parser,
             parserOptions: {
-                ecmaVersion: 12,
-                sourceType: 'module',
-            },
-            globals: {
-                ...globals.node,
-                // browser: false is not required; simply omit browser globals
+                project: true,
+                tsconfigRootDir: '.',
             },
         },
         plugins: {
             '@typescript-eslint': tseslint.plugin,
-            prettier,
-        },
-        rules: {
-            ...tseslint.configs.recommended.rules,
-            '@typescript-eslint/no-unused-vars': 'error',
-            '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-            'prettier/prettier': 'error',
         },
     },
-]);
+    {
+        files: ['**/*.js', '**/*.mjs', '**/*.cjs'],
+        ...js.configs.recommended,
+        languageOptions: {
+            globals: {
+                ...globals.node,
+            },
+        },
+    },
+);

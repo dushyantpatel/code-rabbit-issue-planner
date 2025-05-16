@@ -10,9 +10,8 @@ class HTTPError extends Error {
         this.statusCode = statusCode;
         this.errorMessage = message;
 
-        if (Error.captureStackTrace) {
-            Error.captureStackTrace(this, HTTPError);
-        }
+        // Always capture stack trace in modern Node.js
+        Error.captureStackTrace(this, HTTPError);
     }
 }
 
