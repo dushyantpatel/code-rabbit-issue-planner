@@ -1,3 +1,5 @@
+import { log } from './logger.js';
+
 /**
  * Custom error class for HTTP errors
  */
@@ -12,6 +14,9 @@ class HTTPError extends Error {
 
         // Always capture stack trace in modern Node.js
         Error.captureStackTrace(this, HTTPError);
+
+        // Log the error
+        log.error(`HTTP Error ${statusCode.toString()}: ${message}`, 'HTTPError');
     }
 }
 

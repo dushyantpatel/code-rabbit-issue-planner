@@ -1,3 +1,15 @@
 {
-    "apiPort": 8000
+    "apiPort": 8000,
+    "logging": {
+        "level": "debug",
+        "file": {
+            "enabled": true,
+            "path": "logs/combined.log",
+            "errorPath": "logs/error.log"
+        },
+        "console": {
+            "enabled": true,
+            "colorized": true
+        }
+    }
 }

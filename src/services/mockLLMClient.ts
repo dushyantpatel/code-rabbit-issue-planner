@@ -2,6 +2,7 @@ import { Issue } from '../types/issue.js';
 import { LLMClient } from '../types/llmClient.js';
 import { LLMAnalysisResponse } from '../types/llmAnalysisResponse.js';
 import { LLMIssuePlanResponse } from '../types/llmIssuePlanResponse.js';
+import { log } from '../common/logger.js';
 
 /**
  * A mock implementation of the LLMClient interface for testing purposes.
@@ -23,26 +24,40 @@ class MockLLMClient implements LLMClient {
      * Analyzes an issue and returns mocked analysis results
      */
     async analyzeIssue(input: Issue): Promise<LLMAnalysisResponse> {
+        log.info(`Starting analysis for issue: ${input.id}`, 'MockLLMClient');
+
         // Simulate some async work
+        log.debug('Simulating LLM processing time', 'MockLLMClient');
         await new Promise((resolve) => setTimeout(resolve, 500));
 
         // Calculate a deterministic response based on the input
         const hash = this.hashString(input.id + input.title + input.description);
+        log.debug(`Generated hash for issue ${input.id}: ${hash.toString()}`, 'MockLLMClient');
 
         // Select 1-3 labels based on the hash
         const labelCount = (hash % 3) + 1;
         const selectedLabels = this.selectRandomItems(this.labels, labelCount, hash);
+        log.debug(
+            `Selected ${labelCount.toString()} labels: ${selectedLabels.join(', ')}`,
+            'MockLLMClient',
+        );
 
         // Select an assignee
         const assigneeIndex = hash % this.assignees.length;
         const assignedTo = this.assignees[assigneeIndex];
+        log.debug(`Selected assignee: ${assignedTo}`, 'MockLLMClient');
 
         // Generate a confidence score (0.5-1.0)
         const confidence = 0.5 + (hash % 50) / 100;
 
         // Determine priority based on confidence
         const priority = confidence > 0.8 ? 'high' : confidence > 0.6 ? 'medium' : 'low';
+        log.debug(
+            `Determined priority: ${priority} with confidence: ${confidence.toString()}`,
+            'MockLLMClient',
+        );
 
+        log.info(`Completed analysis for issue: ${input.id}`, 'MockLLMClient');
         return {
             labels: selectedLabels,
             assignedTo,
@@ -55,11 +70,18 @@ class MockLLMClient implements LLMClient {
      * Generates a mock plan for an issue
      */
     async planIssue(input: Issue): Promise<LLMIssuePlanResponse> {
+        log.info(`Starting plan generation for issue: ${input.id}`, 'MockLLMClient');
+
         // Simulate some async work
+        log.debug('Simulating LLM processing time for planning', 'MockLLMClient');
         await new Promise((resolve) => setTimeout(resolve, 500));
 
+        const plan = this.generatePlan(input);
+        log.debug(`Generated plan for issue ${input.id}`, 'MockLLMClient');
+        log.info(`Completed plan generation for issue: ${input.id}`, 'MockLLMClient');
+
         return {
-            plan: this.generatePlan(input),
+            plan,
         };
     }
 
