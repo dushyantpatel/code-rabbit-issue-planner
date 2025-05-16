@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import { eventsRouter } from './routes/eventsRoutes';
-import { issuesRouter } from './routes/issuesRoutes';
-import { analyzeRouter } from './routes/analyzeRoutes';
-import { planRouter } from './routes/planRoutes';
+import { eventsRouter } from './routes/eventsRoutes.js';
+import { issuesRouter } from './routes/issuesRoutes.js';
+import { analyzeRouter } from './routes/analyzeRoutes.js';
+import { planRouter } from './routes/planRoutes.js';
 
 const PORT: number = 8000;
 
