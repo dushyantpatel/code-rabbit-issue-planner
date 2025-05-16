@@ -12,7 +12,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/main.js",
     "dev": "tsx src/main.ts",
-    "dev:watch": "nodemon -q -e ts,tsx -x tsx src/main.ts"
+    "dev:watch": "nodemon -q -e ts,tsx -x tsx src/main.ts",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix"
   },
   "repository": {
     "type": "git",
@@ -29,9 +31,21 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.26.0",
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.1",
     "@types/node": "^22.15.18",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint": "^9.26.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "globals": "^16.1.0",
     "nodemon": "^3.1.10",
+    "prettier": "^3.5.3",
     "tsx": "^4.19.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.1"
   }
 }
