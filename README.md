@@ -39,7 +39,7 @@ I built this project as part of a take-home assignment for a software engineerin
 - Dynamic scaling up/down.
 - Separate dev/production configurations.
 
-_Note: The project was built with the help of LLM tools that were used for generating some parts of the documentation, assisting with integration of external modules and dependency resolution, and auto code completion/generation to help with development. For example, LLM tools were used to create tests for routes once a few were provided, create handlers, and for debugging. AI was not used for things such as structuring the project, choosing external modules, design architecture - this project was built from the ground up._
+_Note: The project was built with the help of LLM tools that were used for generating some parts of the documentation, assisting with integration of external modules and dependency resolution, and auto code completion/generation to help with development. For example, LLM tools were used to create tests for routes once a few were provided, create handlers, and for debugging. AI was not used for things such as structuring the project, choosing external modules, architecture and design - this project was built from the ground up._
 
 ## Features
 
