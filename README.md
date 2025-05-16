@@ -16,6 +16,8 @@ An intelligent issue management system that uses LLM (Large Language Model) capa
 - **Extensible**: Modular design ready for integration with any LLM service
 - **Robust Logging**: Comprehensive logging system with context-aware logs
 - **Interactive Documentation**: Markdown README rendered as HTML at the root endpoint
+- **Test Utilities**: Helpers for test data and state management
+- **Comprehensive Test Coverage**: Unit and integration tests with coverage reporting
 
 ## Tech Stack
 
@@ -81,7 +83,7 @@ The server will start on port 8000 (configurable in `src/config.json`).
 
 ## Testing
 
-This project includes a comprehensive test suite with both unit tests and integration tests:
+This project includes a comprehensive test suite with both unit tests and integration tests, as well as coverage reporting and test utilities. For full details, see the [test/README.md](test/README.md).
 
 - `npm test` - Run all tests
 - `npm run test:unit` - Run only unit tests
@@ -95,6 +97,8 @@ The testing framework uses:
 - **Sinon** - Mocking and stubbing
 - **Supertest** - HTTP testing
 - **NYC (Istanbul)** - Code coverage
+
+Test utilities are provided in `test/test-helpers.ts` and a dedicated test Express server is available for integration tests.
 
 ## Project Structure
 
@@ -124,6 +128,17 @@ src/
     ├── llmAnalysisResponse.ts  # Analysis result structure
     ├── llmClient.ts        # LLM client interface
     └── llmIssuePlanResponse.ts # Planning result structure
+
+test/
+├── README.md           # Testing documentation and guidelines
+├── SUMMARY.md          # Testing implementation summary
+├── integration/        # Integration tests (API routes)
+│   └── routes/
+├── unit/               # Unit tests (controllers, db, services)
+├── test-helpers.ts     # Test utility functions
+├── test-server.ts      # Test Express server for integration tests
+├── mocha.setup.ts      # Global test setup
+└── tsconfig.json       # Test TypeScript config
 ```
 
 ## Current Implementation
@@ -188,10 +203,11 @@ curl -X POST http://localhost:8000/events \
 
 ### Testing & Documentation
 
-- **Unit Tests**: Add comprehensive test coverage with Jest
+- **Unit Tests**: Expand test coverage for all modules
 - **Integration Tests**: End-to-end API testing
 - **API Documentation**: Implement Swagger/OpenAPI specifications
 - **Advanced Analytics**: Add statistics and insights on issue resolution patterns
+- **Test Utilities**: Continue to improve test helpers and coverage reporting
 
 ### UI & Usability
 
