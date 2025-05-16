@@ -1,7 +1,8 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
+import { saveNewIssue } from '../controllers/saveNewIssue.js';
 
-export const eventsRouter = express.Router();
+const eventsRouter = express.Router();
 
-eventsRouter.post('/', (req, res) => {
-    res.json("you're POST on /events");
-});
+eventsRouter.post('/', saveNewIssue);
+
+export { eventsRouter };

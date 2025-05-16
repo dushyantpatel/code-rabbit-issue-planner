@@ -1,0 +1,7 @@
+{
+    "id": "issue-123",
+    "title": "Add retry logic to HTTP client",
+    "description": "Requests to external APIs sometimes fail. We need to add automatic entries.",
+    "author": "alice@example.com",
+    "createdAt": "2024-04-01T10:15:00Z"
+}
