@@ -1,4 +1,4 @@
-import { IssueComment } from './internal/issueComment.js';
+import { IssueComment } from './issueComment.js';
 
 export interface Issue {
     id: string;
