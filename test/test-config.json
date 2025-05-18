@@ -1,0 +1,23 @@
+{
+  "apiPort": 8000,
+  "logging": {
+    "level": "debug",
+    "file": {
+      "enabled": true,
+      "path": "logs/combined.log",
+      "errorPath": "logs/error.log"
+    },
+    "console": {
+      "enabled": true,
+      "colorized": true
+    }
+  },
+  "llm": {
+    "provider": "mock",
+    "anthropic": {
+      "apiKey": "test-key-not-used",
+      "model": "test-model-not-used",
+      "maxRetries": 0
+    }
+  }
+}

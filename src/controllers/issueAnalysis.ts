@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { dataStore } from '../db/dataStore.js';
 import { HTTPError, throwHttpError } from '../common/errors.js';
-import { MockLLMClient } from '../services/mockLLMClient.js';
+import { LLMClientFactory } from '../services/llmClientFactory.js';
 import { log } from '../common/logger.js';
 
-// Create a singleton instance of the LLM client
-const llmClient = new MockLLMClient();
+// Create a singleton instance of the LLM client using the factory
+const llmClient = LLMClientFactory.createClient();
 
 /**
  * Analyzes an issue using the LLM client and updates the issue with the analysis results

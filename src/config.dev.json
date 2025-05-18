@@ -1,0 +1,23 @@
+{
+    "apiPort": 8000,
+    "logging": {
+        "level": "debug",
+        "file": {
+            "enabled": true,
+            "path": "logs/dev-combined.log",
+            "errorPath": "logs/dev-error.log"
+        },
+        "console": {
+            "enabled": true,
+            "colorized": true
+        }
+    },
+    "llm": {
+        "provider": "mock",
+        "anthropic": {
+            "apiKey": "YOUR_DEV_ANTHROPIC_API_KEY",
+            "model": "claude-3-haiku-20240307",
+            "maxRetries": 3
+        }
+    }
+}

@@ -4,7 +4,7 @@ import { eventsRouter } from './routes/eventsRoutes.js';
 import { issuesRouter } from './routes/issuesRoutes.js';
 import { analyzeRouter } from './routes/analyzeRoutes.js';
 import { planRouter } from './routes/planRoutes.js';
-import config from './config.json' with { type: 'json' };
+import config from './common/configLoader.js';
 import { htmlReadmeContent } from './readme.js';
 import { log, httpLogger } from './common/logger.js';
 
