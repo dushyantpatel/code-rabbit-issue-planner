@@ -1,15 +1,23 @@
 {
     "apiPort": 8000,
     "logging": {
-        "level": "debug",
+        "level": "info",
         "file": {
             "enabled": true,
-            "path": "logs/combined.log",
-            "errorPath": "logs/error.log"
+            "path": "logs/prod-combined.log",
+            "errorPath": "logs/prod-error.log"
         },
         "console": {
             "enabled": true,
-            "colorized": true
+            "colorized": false
+        }
+    },
+    "llm": {
+        "provider": "mock",
+        "anthropic": {
+            "apiKey": "YOUR_PRODUCTION_ANTHROPIC_API_KEY",
+            "model": "claude-3-opus-20240229",
+            "maxRetries": 5
         }
     }
 }

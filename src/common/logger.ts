@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import winston from 'winston';
+import config from './configLoader.js';
 
 // Use Winston's TransformableInfo type directly, with optional additions
 type LogInfo = winston.Logform.TransformableInfo & {
@@ -29,7 +30,7 @@ winston.addColors(colors);
 
 // Define the logger instance
 const logger = winston.createLogger({
-    level: 'info',
+    level: config.logging.level,
     levels,
     format: winston.format.combine(
         winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss:ms' }),
@@ -42,31 +43,39 @@ const logger = winston.createLogger({
         }),
     ),
     transports: [
-        // Console transport with colors
-        new winston.transports.Console({
-            format: winston.format.combine(
-                winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss:ms' }),
-                winston.format.colorize(),
-                winston.format.printf((info: winston.Logform.TransformableInfo) => {
-                    const timestamp = info.timestamp ?? new Date().toISOString();
-                    const context = (info as LogInfo).context ?? 'App';
-                    const message = String(info.message);
-                    // eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
-                    return `${timestamp} [${info.level}] [${context}]: ${message}`;
-                }),
-            ),
-        }),
-
-        // File transport - All logs
-        new winston.transports.File({
-            filename: 'logs/combined.log',
-        }),
-
-        // File transport - Error logs only
-        new winston.transports.File({
-            filename: 'logs/error.log',
-            level: 'error',
-        }),
+        // Console transport (conditional based on config)
+        ...(config.logging.console.enabled
+            ? [
+                  new winston.transports.Console({
+                      format: winston.format.combine(
+                          winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss:ms' }),
+                          // Only colorize if specified in config
+                          ...(config.logging.console.colorized ? [winston.format.colorize()] : []),
+                          winston.format.printf((info: winston.Logform.TransformableInfo) => {
+                              const timestamp = info.timestamp ?? new Date().toISOString();
+                              const context = (info as LogInfo).context ?? 'App';
+                              const message = String(info.message);
+                              // eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
+                              return `${timestamp} [${info.level}] [${context}]: ${message}`;
+                          }),
+                      ),
+                  }),
+              ]
+            : []),
+        // File transports (conditional based on config)
+        ...(config.logging.file.enabled
+            ? [
+                  // File transport for all logs
+                  new winston.transports.File({
+                      filename: config.logging.file.path,
+                  }),
+                  // Separate file for errors
+                  new winston.transports.File({
+                      filename: config.logging.file.errorPath,
+                      level: 'error',
+                  }),
+              ]
+            : []),
     ],
 });
 
