@@ -1,5 +1,5 @@
 {
-    "name": "code-rabbit-issue-planner",
+    "name": "issue-planner",
     "version": "1.0.0",
     "description": "Agentic issue planner with LLM based action and planning system",
     "main": "src/main.ts",
@@ -25,14 +25,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/dushyantpatel/code-rabbit-issue-planner.git"
+        "url": "git+https://github.com/dushyantpatel/issue-planner.git"
     },
     "author": "Dushyant Patel",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/dushyantpatel/code-rabbit-issue-planner/issues"
+        "url": "https://github.com/dushyantpatel/issue-planner/issues"
     },
-    "homepage": "https://github.com/dushyantpatel/code-rabbit-issue-planner#readme",
+    "homepage": "https://github.com/dushyantpatel/issue-planner#readme",
     "dependencies": {
         "cors": "^2.8.5",
         "dotenv": "^16.5.0",

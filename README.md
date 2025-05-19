@@ -98,8 +98,8 @@ _Note: The project was built with the help of LLM tools that were used for gener
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/dushyantpatel/code-rabbit-issue-planner.git
-    cd code-rabbit-issue-planner
+    git clone https://github.com/dushyantpatel/issue-planner.git
+    cd issue-planner
     ```
 
 2. Install dependencies:
