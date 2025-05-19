@@ -44,7 +44,6 @@
     "devDependencies": {
         "@eslint/eslintrc": "^3.3.1",
         "@eslint/js": "^9.26.0",
-        "@istanbuljs/nyc-config-typescript": "^1.0.2",
         "@types/chai": "^5.2.2",
         "@types/cors": "^2.8.18",
         "@types/express": "^5.0.1",
@@ -64,7 +63,6 @@
         "globals": "^16.1.0",
         "mocha": "^11.2.2",
         "nodemon": "^3.1.10",
-        "nyc": "^17.1.0",
         "prettier": "^3.5.3",
         "rimraf": "^6.0.1",
         "sinon": "^20.0.0",
