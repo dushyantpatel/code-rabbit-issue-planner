@@ -28,7 +28,7 @@ export interface AppConfig {
 }
 
 // Get the environment from NODE_ENV or default to development
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV ?? 'development';
 
 /**
  * Validates the application configuration
